@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"path/filepath"
 	"runtime"
-	_ "testGo03/routers"
+	_ "ServerManagementSystem/routers"
 	"testing"
 
 	"github.com/astaxie/beego"

@@ -12,7 +12,7 @@ type IndexController struct {
 
 func (c *IndexController) Get() {
 	c.Data["Website"] = "beego.me"
-	c.Data["Email"] = "astaxie@gmail.com"
+	c.Data["Email"] = "zuxingyu@gmail.com"
 	c.TplName = "index.tpl"
 }
 

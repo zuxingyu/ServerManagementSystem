@@ -1,6 +1,8 @@
 package web
 
-import "github.com/astaxie/beego"
+import (
+	"github.com/astaxie/beego"
+)
 
 type UserWebController struct {
 	beego.Controller

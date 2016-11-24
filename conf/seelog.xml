@@ -1,0 +1,26 @@
+<!--设置最小和最大触发log的等级，minlevel和maxlevel,如果设置levels="trace,info,critical"后，表示只有选中的等级才触发log-->
+<!--<seelog type="asynctimer" asyncinterval="5000000" minlevel="info" maxlevel="error">-->
+<seelog>
+    <!--excptions表示例外，表示不受根目录下level级别的限制，可以单独设定级别-->
+    <!--<exceptions>-->
+        <!--<exception funcpattern="*main.test*Something*" minlevel="info"/>-->
+        <!--<exception filepattern="*main.go" minlevel="error"/>-->
+    <!--</exceptions>-->
+    <outputs formatid="main">
+
+        <!--表示控制台输出，-->
+        <console/>
+        <!--使用format1的输出格式-->
+        <!--<filter levels="info,debug,critical,error">-->
+            <rollingfile type="date" filename="data/log/log.log" namemode="prefix" datepattern="2006.01.02" maxrolls="180" />
+        <!--</filter>-->
+        <!--<splitter formatid="format1">-->
+            <!--<file path="data/log/log.log"/>-->
+        <!--</splitter>-->
+
+    </outputs>
+    <formats>
+        <!--<format id="main" format="%Date(2006 Jan 02/3:04:05.000000000 PM MST) [%Level] %Msg%n"/>-->
+        <format id="main" format="%Date/%Time [%LEVEL] %File %Line %Msg%n"/>
+    </formats>
+</seelog>

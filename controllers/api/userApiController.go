@@ -1,9 +1,11 @@
 package api
 
-import "github.com/astaxie/beego"
+import (
+	"ServerManagementSystem/controllers"
+)
 
 type UserApiController struct {
-	beego.Controller
+	controllers.BaseController
 }
 
 func (c *UserApiController) Get() {

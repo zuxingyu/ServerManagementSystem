@@ -1,0 +1,6 @@
+2016-12-06/10:01:30 [INFO] loginController.go 16 用户名或密码错误，请重新输入！
+2016-12-06/10:05:59 [INFO] loginController.go 16 用户名或密码错误，请重新输入！
+2016-12-06/10:08:03 [ERROR] baseWebController.go 22 必填参数为空: password
+2016-12-06/10:08:03 [INFO] loginController.go 16 用户名或密码错误，请重新输入！
+2016-12-06/10:14:51 [ERROR] baseWebController.go 22 必填参数为空: password
+2016-12-06/10:14:51 [INFO] loginController.go 16 用户名或密码错误，请重新输入！

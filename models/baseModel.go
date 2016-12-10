@@ -1,4 +1,4 @@
-package model
+package models
 
 import (
 	_ "github.com/go-sql-driver/mysql"
@@ -16,6 +16,20 @@ const (
 	RUN_MODE_DEV = "dev"
 	RUN_MODE_TEST = "test"
 	RUN_MODE_PROD = "prod"
+)
+
+const (
+	ServerSucessCode        = 1000
+	ServerUserNotExist      = 1001 // 用户不存在
+	ServerUserAlreadyExist  = 1002 // 用户已存在
+	ServerfailUndefinedCode = 9999 //未定义错误
+
+	SERVER_VRICODE_ERROR               = 1500 //验证码错误
+	SERVER_VRICODE_INVALID             = 1501 //验证码失效
+	SERVER_PHONE_NUM_EXIST             = 1502 //手机号已经注册
+	SERVER_PHONE_NUM_NOT_EXIST         = 1503 //手机号未注册
+	SERVER_PHONE_NUM_OR_PASSWORD_ERROR = 1504 //手机号或密码错误
+	SERVER_USER_EXIST		   = 1505 //用户名已存在
 )
 
 

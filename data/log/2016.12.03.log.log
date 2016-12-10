@@ -1,0 +1,4 @@
+2016-12-03/23:43:25 [ERROR] baseWebController.go 22 require filed: password
+2016-12-03/23:43:32 [INFO] publicController.go 14 userName:admin
+2016-12-03/23:43:32 [INFO] publicController.go 15 password:123456
+2016-12-03/23:56:34 [ERROR] baseWebController.go 22 require filed: username

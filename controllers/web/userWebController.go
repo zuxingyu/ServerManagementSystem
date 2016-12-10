@@ -1,17 +1,17 @@
 package web
 
 import (
-	"github.com/astaxie/beego"
+	"ServerManagementSystem/controllers"
 )
 
 type UserWebController struct {
-	beego.Controller
+	controllers.BaseController
 }
 
 // @router / [get]
-func (c *UserWebController) Get() {
-	c.Data["Website"] = "beego.me"
-	c.Data["Email"] = "astaxie@gmail.com"
-	c.TplName = "web/index.tpl"
+func (this *UserWebController) Get() {
+	this.Data["Website"] = "beego.me"
+	this.Data["Email"] = "astaxie@gmail.com"
+	this.TplName = "web/index.tpl"
 }
 

@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego/context"
 	"net/http"
 	"html/template"
+	"ServerManagementSystem/controllers/web/admin"
 )
 
 func init() {
@@ -18,21 +19,24 @@ func init() {
 	)
 
 	nsWeb := beego.NewNamespace("/web",
-		beego.NSNamespace("/user",
-			beego.NSInclude(&web.UserWebController{}),
-		),
 		beego.NSNamespace("/public",
 			beego.NSInclude(&web.PublicController{}),
 		),
+		beego.NSNamespace("/userManager",
+			beego.NSInclude(&admin.AdminUserController{}),
+		),
 	)
-
 
 
 	// 设置首页
 	beego.Router("/", &web.LoginController{})
 
-	// 设置首页
+	// 登陆
 	beego.Router("/login", &web.LoginController{})
+
+	// 登出
+	beego.Router("/logout", &web.LogOutController{})
+
 
 	// 设置404，500页面
 	beego.ErrorHandler("404", page_not_found)

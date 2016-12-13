@@ -1,0 +1,1 @@
+[xorm] [info]  2016/12/13 09:45:25.509193 [sql] SELECT `id`, `nick_name`, `user_name`, `password`, `salt`, `created`, `updated`, `user_type`, `email`, `mobile`, `mobile_check`, `avatar`, `user_state` FROM `user` WHERE user_name = ? LIMIT 1 [args] [admin]

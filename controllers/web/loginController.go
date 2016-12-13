@@ -3,11 +3,14 @@ package web
 import (
 	"ServerManagementSystem/models"
 	"github.com/astaxie/beego"
-	"wenshixiongServer/util"
 	"ServerManagementSystem/logs"
-	"strings"
+	"encoding/json"
+	"strconv"
+	"time"
 )
 
+
+// 登陆
 type LoginController struct {
 	BaseWebController
 }
@@ -37,7 +40,7 @@ func (this *LoginController) Post() {
 	if this.Err == nil {
 		logs.Logger.Info(user)
 		var isAdmin bool
-		if strings.EqualFold("admin", user.UserName) {
+		if user.UserType == models.USER_TYPE_SUPER_ADMIN {
 			isAdmin = true
 		} else {
 			isAdmin = false
@@ -48,18 +51,40 @@ func (this *LoginController) Post() {
 		this.SetSession("nickName", user.NickName)
 		this.SetSession("userId", user.Id)
 		this.SetSession("avatar", user.Avatar)
+
+		// 将登陆信息存入redis
+		jsonByte, _ := json.Marshal(user)
+		models.RedisCache.Put(models.USER_INFO_REDIS + "_" + strconv.FormatInt(user.Id, 10), jsonByte, 60*60*24*time.Second)
+
 		this.Redirect("/web/public/index", 302)
 		return
 	} else {
 		flash := beego.NewFlash()
 
 		flash.Error(this.Err.Error())
-		util.Logger.Info(this.Err.Error())
+		logs.Logger.Info(this.Err.Error())
 		flash.Store(&this.Controller)
 		this.Redirect("/", 302)
 		return
 	}
 }
+
+// 登出
+type LogOutController struct {
+	BaseWebController
+}
+
+func (this *LogOutController) Prepare() {
+
+}
+
+func (this *LogOutController) Get() {
+	this.DestroySession()
+	this.Redirect("/", 302)
+	return
+}
+
+
 
 
 

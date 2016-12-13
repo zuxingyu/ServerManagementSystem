@@ -275,21 +275,19 @@
                             <li><a href="#" class="bg-5"></a></li>
                             <li><a href="#" class="bg-6"></a></li>
                         </ul>
-
-                        <div class="form-group videobg-check">
-                            <label class="col-xs-8 control-label">Video BG</label>
-                            <div class="col-xs-4 control-label">
-                                <div class="onoffswitch greensea small">
-                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-                                           id="videobg-check">
-                                    <label class="onoffswitch-label" for="videobg-check">
-                                        <span class="onoffswitch-inner"></span>
-                                        <span class="onoffswitch-switch"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
+                        <!--<div class="form-group videobg-check">-->
+                        <!--<label class="col-xs-8 control-label">Video BG</label>-->
+                        <!--<div class="col-xs-4 control-label">-->
+                        <!--<div class="onoffswitch greensea small">-->
+                        <!--<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"-->
+                        <!--id="videobg-check">-->
+                        <!--<label class="onoffswitch-label" for="videobg-check">-->
+                        <!--<span class="onoffswitch-inner"></span>-->
+                        <!--<span class="onoffswitch-switch"></span>-->
+                        <!--</label>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--</div>-->
                     </li>
 
                     <li class="divider"></li>
@@ -310,7 +308,7 @@
                     <li class="divider"></li>
 
                     <li>
-                        <a href="#"><i class="fa fa-power-off"></i>退出</a>
+                        <a href="#" id="a_logout"><i class="fa fa-power-off"></i>退出</a>
                     </li>
                 </ul>
             </li>
@@ -330,6 +328,37 @@
                 </ul>
             </li>
 
+            {{if .isAdmin }}
+            <li class="navigation" id="admin_userManager">
+                <a href="#" class="sidebar-toggle" data-toggle="#admin_userManager">
+                    用户管理 <i class="fa fa-angle-up"></i>
+                </a>
+                <ul class="menu">
+                    <li>
+                        <a href="/web/userManager/list">
+                            <i class="fa fa-user-circle"></i>用户列表
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="navigation" id="admin_systemManager">
+                <a href="#" class="sidebar-toggle" data-toggle="#admin_systemManager">
+                    系统管理 <i class="fa fa-angle-up"></i>
+                </a>
+                <ul class="menu">
+                    <li>
+                        <a href="/web/systemManager/mail">
+                            <i class="fa fa-envelope-o"></i> 邮件设置
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/systemManager/config">
+                            <i class="fa fa-cog"></i> 系统设置
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {{else}}
             <li class="navigation" id="navigation">
                 <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i
                         class="fa fa-angle-up"></i></a>
@@ -494,71 +523,70 @@
                             <i class="fa fa-bar-chart-o"></i> Charts & Graphs
                         </a>
                     </li>
-
-
                 </ul>
-
             </li>
+            {{end}}
 
-            <li class="summary" id="order-summary">
-                <a href="#" class="sidebar-toggle underline" data-toggle="#order-summary">Orders Summary <i
-                        class="fa fa-angle-up"></i></a>
 
-                <div class="media">
-                    <a class="pull-right" href="#">
-                        <span id="sales-chart"></span>
-                    </a>
-                    <div class="media-body">
-                        This week sales
-                        <h3 class="media-heading">26, 149</h3>
-                    </div>
-                </div>
+            <!--<li class="summary" id="order-summary">-->
+            <!--<a href="#" class="sidebar-toggle underline" data-toggle="#order-summary">Orders Summary <i-->
+            <!--class="fa fa-angle-up"></i></a>-->
 
-                <div class="media">
-                    <a class="pull-right" href="#">
-                        <span id="balance-chart"></span>
-                    </a>
-                    <div class="media-body">
-                        This week balance
-                        <h3 class="media-heading">318, 651</h3>
-                    </div>
-                </div>
+            <!--<div class="media">-->
+            <!--<a class="pull-right" href="#">-->
+            <!--<span id="sales-chart"></span>-->
+            <!--</a>-->
+            <!--<div class="media-body">-->
+            <!--This week sales-->
+            <!--<h3 class="media-heading">26, 149</h3>-->
+            <!--</div>-->
+            <!--</div>-->
 
-            </li>
+            <!--<div class="media">-->
+            <!--<a class="pull-right" href="#">-->
+            <!--<span id="balance-chart"></span>-->
+            <!--</a>-->
+            <!--<div class="media-body">-->
+            <!--This week balance-->
+            <!--<h3 class="media-heading">318, 651</h3>-->
+            <!--</div>-->
+            <!--</div>-->
 
-            <li class="settings" id="general-settings">
-                <a href="#" class="sidebar-toggle underline" data-toggle="#general-settings">General Settings <i
-                        class="fa fa-angle-up"></i></a>
+            <!--</li>-->
 
-                <div class="form-group">
-                    <label class="col-xs-8 control-label">Switch ON</label>
-                    <div class="col-xs-4 control-label">
-                        <div class="onoffswitch greensea">
-                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-                                   id="switch-on" checked="">
-                            <label class="onoffswitch-label" for="switch-on">
-                                <span class="onoffswitch-inner"></span>
-                                <span class="onoffswitch-switch"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+            <!--<li class="settings" id="general-settings">-->
+            <!--<a href="#" class="sidebar-toggle underline" data-toggle="#general-settings">General Settings <i-->
+            <!--class="fa fa-angle-up"></i></a>-->
 
-                <div class="form-group">
-                    <label class="col-xs-8 control-label">Switch OFF</label>
-                    <div class="col-xs-4 control-label">
-                        <div class="onoffswitch greensea">
-                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-                                   id="switch-off">
-                            <label class="onoffswitch-label" for="switch-off">
-                                <span class="onoffswitch-inner"></span>
-                                <span class="onoffswitch-switch"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+            <!--<div class="form-group">-->
+            <!--<label class="col-xs-8 control-label">Switch ON</label>-->
+            <!--<div class="col-xs-4 control-label">-->
+            <!--<div class="onoffswitch greensea">-->
+            <!--<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"-->
+            <!--id="switch-on" checked="">-->
+            <!--<label class="onoffswitch-label" for="switch-on">-->
+            <!--<span class="onoffswitch-inner"></span>-->
+            <!--<span class="onoffswitch-switch"></span>-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
 
-            </li>
+            <!--<div class="form-group">-->
+            <!--<label class="col-xs-8 control-label">Switch OFF</label>-->
+            <!--<div class="col-xs-4 control-label">-->
+            <!--<div class="onoffswitch greensea">-->
+            <!--<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"-->
+            <!--id="switch-off">-->
+            <!--<label class="onoffswitch-label" for="switch-off">-->
+            <!--<span class="onoffswitch-inner"></span>-->
+            <!--<span class="onoffswitch-switch"></span>-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--</li>-->
 
 
         </ul>

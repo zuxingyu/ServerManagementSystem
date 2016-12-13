@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{config "String" "globaltitle" ""}}</title>
+    <title>{{config "String" "globaltitle" ""}} - 用户列表</title>
     {{template "template/meta.tpl" .}}
 </head>
 <body class="bg-1">
@@ -20,7 +20,7 @@
         <div id="content" class="col-md-12">
             <!-- page header -->
             <div class="pageheader">
-                <h2><i class="fa fa-home"></i> 首页
+                <h2><i class="fa fa-home"></i>用户列表
                     <span></span></h2>
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
@@ -33,7 +33,7 @@
             <!-- /page header -->
             <!-- content main container -->
             <div class="main">
-                这是一个首页
+
             </div>
             <!-- /content container -->
         </div>

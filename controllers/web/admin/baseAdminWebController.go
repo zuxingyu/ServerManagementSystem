@@ -1,35 +1,20 @@
-package web
+package admin
 
 import (
-	"ServerManagementSystem/controllers"
-	"fmt"
-	"net/http"
-	"errors"
-	"ServerManagementSystem/logs"
-	"github.com/astaxie/beego"
+	"ServerManagementSystem/controllers/web"
 	"strings"
+	"github.com/astaxie/beego"
+	"ServerManagementSystem/logs"
+	"ServerManagementSystem/models"
+	"errors"
 )
 
-type BaseWebController struct {
-	controllers.BaseController
+type BaseAdminController struct {
+	web.BaseWebController
 }
 
 
-
-func (this *BaseWebController) MustString(key string) string {
-	v := this.GetString(key)
-	if v == "" {
-		// 400 Error, Parameter error
-		this.ErrorCode = http.StatusBadRequest
-		this.Err = errors.New(fmt.Sprintf("必填参数为空: %s", key))
-		logs.Logger.Error(this.Err)
-		//this.Failed()
-	}
-	return v
-}
-
-
-func (this *BaseWebController) Prepare() {
+func (this *BaseAdminController) Prepare() {
 	userName := this.GetSession("userName")
 	userId := this.GetSession("userId")
 
@@ -37,15 +22,35 @@ func (this *BaseWebController) Prepare() {
 		flash := beego.NewFlash()
 
 		flash.Error("登陆信息已过期或用户名不存在")
-		logs.Logger.Info(this.Err.Error())
+		logs.Logger.Error(this.Err.Error())
 		flash.Store(&this.Controller)
 
 		this.Redirect("/", 302)
 		return
-	} else {
-		this.Data["LoginUserName"] = userName.(string)
-		this.Data["LoginUserId"] = userId.(int64)
 	}
+	// 判断用户是否是管理员
+	user, thErr := models.User_GetByUid(userId.(int64), true)
+	if thErr != nil {
+		flash := beego.NewFlash()
+		flash.Error(thErr.Error())
+		logs.Logger.Error(this.Err.Error())
+		flash.Store(&this.Controller)
+		this.Redirect("/", 302)
+		return
+	} else {
+		if models.USER_TYPE_SUPER_ADMIN != user.UserType {
+			flash := beego.NewFlash()
+			err := errors.New("您没有此操作权限")
+			flash.Error(err.Error())
+			logs.Logger.Error(err.Error())
+			flash.Store(&this.Controller)
+			this.Redirect("/", 302)
+			return
+		}
+	}
+
+	this.Data["LoginUserName"] = userName.(string)
+	this.Data["LoginUserId"] = userId.(int64)
 	this.Data["isAdmin"] = this.GetSession("isAdmin").(bool)
 
 	// 如果没有头像，使用默认头像
@@ -69,9 +74,3 @@ func (this *BaseWebController) Prepare() {
 	}
 	this.Data["LoginNickName"] = nickNameStr
 }
-
-
-
-
-
-

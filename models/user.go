@@ -9,6 +9,8 @@ import (
 	"strconv"
 	"encoding/json"
 	"time"
+	"strings"
+	"fmt"
 )
 
 const USER_INFO_REDIS = "UserInfo"
@@ -32,6 +34,15 @@ type User struct {
 	Mobile      string `description:"手机号" json:"mobile"`
 	MobileCheck int    `description:"手机是否验证" json:"mobileCheck"`
 	Avatar      string `description:"头像" json:"avatar"`
+	UserState   int    `description:"用户状态" json:"userState"`
+}
+
+type UserDTO struct {
+	Id          int64  `description:"id" json:"id" xorm:"pk autoincr"`
+	NickName    string `description:"昵称 最长50字符" json:"nickName" valid:"MaxSize(50)"`
+	UserName    string `description:"登录名" json:"userName"`
+	Created     int64  `description:"注册时间" xorm:"created"`
+	Mobile      string `description:"手机号" json:"mobile"`
 	UserState   int    `description:"用户状态" json:"userState"`
 }
 
@@ -70,6 +81,35 @@ func User_Login(userName string, userPassword string, baseUser BaseUser) (err er
 	return User_ValidateLoginPwd(userName, userPassword, baseUser, nil)
 }
 
+func User_GetByUid(uid int64, isNeedCache bool) (user User, err error) {
+	returnUser := User{}
+	var has bool
+	// 是否使用缓存
+	if isNeedCache {
+		redisTemp := RedisCache.Get(USER_INFO_REDIS + "_" + strconv.FormatInt(uid, 10))
+		if redisTemp != nil {
+			err = json.Unmarshal(redisTemp.([]byte), &returnUser)
+			if err != nil {
+				return returnUser, err
+			}
+			return returnUser, nil
+		}
+	}
+
+	has, err = Orm.Where("id = ?", uid).Get(&returnUser)
+	jsonByte, _ := json.Marshal(&returnUser)
+	RedisCache.Put(USER_INFO_REDIS + "_" + strconv.FormatInt(returnUser.Id, 10), jsonByte, 60 * 60 * 24 * time.Second)
+	if err != nil {
+		return returnUser, err
+	}
+
+	if has {
+		return returnUser, nil
+	}
+	return returnUser, errors.New("用户不存在")
+}
+
+// admin操作内容
 func User_Regist(userName string, userPassword string, baseuser BaseUser) (err error, errCode int) {
 	has, err, eCode := baseuser.GetUserByUserName(userName)
 	if eCode == http.StatusInternalServerError {
@@ -102,32 +142,11 @@ func User_Regist(userName string, userPassword string, baseuser BaseUser) (err e
 	return nil, 0
 }
 
-func User_GetByUid(uid int64, isNeedCache bool) (user User, err error) {
-	returnUser := User{}
-	var has bool
-	// 是否使用缓存
-	if isNeedCache {
-		redisTemp := RedisCache.Get(USER_INFO_REDIS + "_" + strconv.FormatInt(uid, 10))
-		if redisTemp != nil {
-			err = json.Unmarshal(redisTemp.([]byte), &returnUser)
-			if err != nil {
-				return returnUser, err
-			}
-			return returnUser, nil
-		}
+func User_GetListForPage(queryStr string) {// ([]User){
+	var querySql = "";
+	if strings.EqualFold("", queryStr){
+		fmt.Print(querySql)
 	}
-
-	has, err = Orm.Where("id = ?", uid).Get(&returnUser)
-	jsonByte, _ := json.Marshal(&returnUser)
-	RedisCache.Put(USER_INFO_REDIS + "_" + strconv.FormatInt(returnUser.Id, 10), jsonByte, 60 * 60 * 24 * time.Second)
-	if err != nil {
-		return returnUser, err
-	}
-
-	if has {
-		return returnUser, nil
-	}
-	return returnUser, errors.New("用户不存在")
 }
 
 func (this *User) GetUserByUserName(userName string) (has bool, error error, errCode int) {

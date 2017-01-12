@@ -13,3 +13,4 @@
 <script src="/static/assets/js/minimal.min.js"></script>
 <script src="/static/assets/js/vendor/confirm/jquery-confirm.min.js"></script>
 <script src="/static/js/leftAndhead.js"></script>
+<script src="/static/js/common.js"></script>

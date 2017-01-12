@@ -23,10 +23,9 @@
                 <h2><i class="fa fa-home"></i> 首页
                     <span></span></h2>
                 <div class="breadcrumbs">
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb transparent-black">
                         <li>当前位置</li>
-                        <li><a href="/web/public/index">首页</a></li>
-                        <li class="active">首页</li>
+                        <li>首页</li>
                     </ol>
                 </div>
             </div>

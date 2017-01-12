@@ -67,8 +67,32 @@
                     }
                 }
             })
-
-        }
+        },
+        UnixToDate: function (unixTime, isFull, timeZone) {
+            if (typeof (timeZone) == 'number') {
+                unixTime = parseInt(unixTime) + parseInt(timeZone) * 60 * 60;
+            }
+            var time = new Date(unixTime);
+            var ymdhis = "";
+            ymdhis += time.getFullYear() + "/";
+            ymdhis +=
+                (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) + "/"
+                    : (time.getMonth() + 1) + "/";
+            ymdhis += time.getDate() < 10 ? "0" + time.getDate() : time.getDate();
+            if (isFull === true) {
+                ymdhis +=
+                    time.getHours() < 10 ? " 0" + time.getHours() + ":" : " "
+                    + time.getHours()
+                    + ":";
+                ymdhis +=
+                    time.getMinutes() < 10 ? "0" + time.getMinutes() + ":" : ""
+                    + time.getMinutes()
+                    + ":";
+                ymdhis +=
+                    time.getSeconds() < 10 ? "0" + time.getSeconds() : time.getSeconds();
+            }
+            return ymdhis;
+        },
     }
 
     window.sms = sms;

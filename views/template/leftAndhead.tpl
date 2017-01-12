@@ -258,7 +258,7 @@
 
             <li class="dropdown divided user" id="current-user">
                 <div class="profile-photo">
-                    <img src="{{ .LoginAvatar }}" width="45px" height="45px" alt/>
+                    <img src="{{ .LoginAvatar }}" alt/>
                 </div>
                 <a class="dropdown-toggle options" data-toggle="dropdown" href="#">
                     {{ .LoginNickName }}<i class="fa fa-caret-down"></i>
@@ -336,7 +336,7 @@
                 <ul class="menu">
                     <li>
                         <a href="/web/userManager/list">
-                            <i class="fa fa-user-circle"></i>用户列表
+                            <i class="fa fa-user-circle"></i> 用户列表
                         </a>
                     </li>
                 </ul>

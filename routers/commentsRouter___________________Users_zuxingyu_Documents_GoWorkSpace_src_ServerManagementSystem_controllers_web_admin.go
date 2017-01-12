@@ -13,4 +13,11 @@ func init() {
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["ServerManagementSystem/controllers/web/admin:AdminUserController"] = append(beego.GlobalControllerRouter["ServerManagementSystem/controllers/web/admin:AdminUserController"],
+		beego.ControllerComments{
+			Method: "UserListData",
+			Router: `/listData`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
 }

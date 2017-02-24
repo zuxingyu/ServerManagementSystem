@@ -5,16 +5,7 @@ import (
 	"github.com/astaxie/beego/context"
 )
 
-/*
- * aColumns []string `SQL Columns to display`
- * thismodel interface{} `SQL model to use`
- * ctx *context.Context `Beego ctx which contains httpcontext`
- * maps []orm.Params `return result in a interface map as []orm.Params`
- * count int64 `return iTotalDisplayRecords`
- * counts int64 `return iTotalRecords`
- *
- */
-func Datatables(aColumns []string, Input *context.BeegoInput, where interface{}) (string, []interface{}, string) {
+func Datatables(tableName string, aColumns []string, Input *context.BeegoInput, where interface{}) (string, []interface{}, string) {
 
 	/*
 	 * Ordering
@@ -31,17 +22,17 @@ func Datatables(aColumns []string, Input *context.BeegoInput, where interface{})
 				thisSortCol, _ := strconv.Atoi(Input.Query("iSortCol_" + istring))
 				if sordir == "asc" {
 					if isFirst {
-						orderStr += orderStr + aColumns[thisSortCol] + " asc"
+						orderStr += tableName + "." + aColumns[thisSortCol] + " asc"
 						isFirst = false
 					} else {
-						orderStr += "," + orderStr + aColumns[thisSortCol] + " asc"
+						orderStr += "," + orderStr + tableName + "." + aColumns[thisSortCol] + " asc"
 					}
 				} else {
 					if isFirst {
-						orderStr += orderStr + aColumns[thisSortCol] + " desc"
+						orderStr += tableName + "." + aColumns[thisSortCol] + " desc"
 						isFirst = false
 					} else {
-						orderStr += "," + orderStr + aColumns[thisSortCol] + " desc"
+						orderStr += "," + orderStr + tableName + "." + aColumns[thisSortCol] + " desc"
 					}
 				}
 			}

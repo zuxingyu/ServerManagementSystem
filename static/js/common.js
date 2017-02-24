@@ -93,7 +93,13 @@
             }
             return ymdhis;
         },
-    }
+        CheckNull: function (text) {
+            if ($.trim(text).length == 0) {
+                return false;
+            }
+            return true;
+        }
+    };
 
     window.sms = sms;
 })()

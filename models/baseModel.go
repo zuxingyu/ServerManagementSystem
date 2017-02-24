@@ -63,7 +63,7 @@ func init(){
 	InitOrm(dbConfig)
 	Orm.TZLocation, _ = time.LoadLocation("Asia/Shanghai")
 
-	err := Orm.Sync2(new(User))
+	err := Orm.Sync2(new(User), new(Server), new(ServerCPULog), new(ServerMemoryLog))
 
 	if err != nil {
 		logs.Logger.Error("同步数据结构失败！\n" + err.Error())

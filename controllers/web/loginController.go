@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"strconv"
 	"time"
+	"fmt"
 )
 
 
@@ -40,11 +41,14 @@ func (this *LoginController) Post() {
 	if this.Err == nil {
 		logs.Logger.Info(user)
 		var isAdmin bool
+		fmt.Println(user.UserType)
+		fmt.Println(models.USER_TYPE_SUPER_ADMIN)
 		if user.UserType == models.USER_TYPE_SUPER_ADMIN {
 			isAdmin = true
 		} else {
 			isAdmin = false
 		}
+		fmt.Println(isAdmin)
 
 		this.SetSession("isAdmin", isAdmin)
 		this.SetSession("userName", user.UserName)

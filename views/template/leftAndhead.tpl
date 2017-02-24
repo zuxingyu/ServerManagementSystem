@@ -359,168 +359,15 @@
                 </ul>
             </li>
             {{else}}
-            <li class="navigation" id="navigation">
-                <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i
-                        class="fa fa-angle-up"></i></a>
+            <li class="navigation" id="user_serverManager">
+                <a href="#" class="sidebar-toggle" data-toggle="#user_serverManager">
+                    服务器管理 <i class="fa fa-angle-up"></i>
+                </a>
                 <ul class="menu">
-
-                    <li class="active">
-                        <a href="index.html">
-                            <i class="fa fa-tachometer"></i> Dashboard
-                            <span class="badge badge-red">1</span>
-                        </a>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-list"></i> Forms <b class="fa fa-plus dropdown-plus"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="form-elements.html">
-                                    <i class="fa fa-caret-right"></i> Common Elements
-                                </a>
-                            </li>
-                            <li>
-                                <a href="validation-elements.html">
-                                    <i class="fa fa-caret-right"></i> Validation
-                                </a>
-                            </li>
-                            <li>
-                                <a href="form-wizard.html">
-                                    <i class="fa fa-caret-right"></i> Form Wizard
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-pencil"></i> Interface <b class="fa fa-plus dropdown-plus"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="ui-elements.html">
-                                    <i class="fa fa-caret-right"></i> UI Elements
-                                </a>
-                            </li>
-                            <li>
-                                <a href="typography.html">
-                                    <i class="fa fa-caret-right"></i> Typography
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tiles.html">
-                                    <i class="fa fa-caret-right"></i> Tiles
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
                     <li>
-                        <a href="buttons.html">
-                            <i class="fa fa-tint"></i> Buttons & Icons
-                        </a>
-                    </li>
-                    <li>
-                        <a href="grid.html">
-                            <i class="fa fa-th"></i> Grid Layout
-                        </a>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-th-large"></i> Tables <b class="fa fa-plus dropdown-plus"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="tables.html">
-                                    <i class="fa fa-caret-right"></i> Bootstrap Tables
-                                </a>
-                            </li>
-                            <li>
-                                <a href="datatables.html">
-                                    <i class="fa fa-caret-right"></i> DataTables
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-desktop"></i> Example Pages <b class="fa fa-plus dropdown-plus"></b>
-                            <span class="label label-greensea">mails</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="login.html">
-                                    <i class="fa fa-caret-right"></i> Login Page
-                                </a>
-                            </li>
-                            <li>
-                                <a href="calendar.html">
-                                    <i class="fa fa-caret-right"></i> Calendar
-                                </a>
-                            </li>
-                            <li>
-                                <a href="page404.html">
-                                    <i class="fa fa-caret-right"></i> Page 404
-                                </a>
-                            </li>
-                            <li>
-                                <a href="page500.html">
-                                    <i class="fa fa-caret-right"></i> Page 500
-                                </a>
-                            </li>
-                            <li>
-                                <a href="page-offline.html">
-                                    <i class="fa fa-caret-right"></i> Page Offline
-                                </a>
-                            </li>
-                            <li>
-                                <a href="gallery.html">
-                                    <i class="fa fa-caret-right"></i> Gallery
-                                </a>
-                            </li>
-                            <li>
-                                <a href="timeline.html">
-                                    <i class="fa fa-caret-right"></i> Timeline
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mail.html">
-                                    <i class="fa fa-caret-right"></i> Vertical Mail
-                                    <span class="badge badge-red">5</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mail-horizontal.html">
-                                    <i class="fa fa-caret-right"></i> Horizontal Mail
-                                    <span class="label label-greensea">mails</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="vector-maps.html">
-                                    <i class="fa fa-caret-right"></i> Vector Maps
-                                </a>
-                            </li>
-                            <li>
-                                <a href="google-maps.html">
-                                    <i class="fa fa-caret-right"></i> Google Maps
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="widgets.html">
-                            <i class="fa fa-play-circle"></i> Widgets
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="charts.html">
-                            <i class="fa fa-bar-chart-o"></i> Charts & Graphs
+                        <a href="/web/serverManager/list">
+                            <i class="fa fa-server"></i> 服务器列表
+                            <!--<span class="badge badge-red">1</span>-->
                         </a>
                     </li>
                 </ul>
@@ -585,17 +432,10 @@
             <!--</div>-->
             <!--</div>-->
             <!--</div>-->
-
             <!--</li>-->
-
-
         </ul>
         <!-- Sidebar end -->
-
-
     </div>
     <!--/.nav-collapse -->
-
-
 </div>
 <!-- Fixed navbar end -->

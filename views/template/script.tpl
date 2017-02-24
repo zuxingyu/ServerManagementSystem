@@ -10,7 +10,7 @@
 <script type="text/javascript" src="/static/assets/js/vendor/videobackground/jquery.videobackground.js"></script>
 <script type="text/javascript" src="/static/assets/js/vendor/blockui/jquery.blockUI.js"></script>
 <script src="/static/assets/js/vendor/chosen/chosen.jquery.min.js"></script>
+<script src="/static/assets/js/vendor/parsley/parsley.min.js"></script>
 <script src="/static/assets/js/minimal.min.js"></script>
 <script src="/static/assets/js/vendor/confirm/jquery-confirm.min.js"></script>
 <script src="/static/js/leftAndhead.js"></script>
-<script src="/static/js/common.js"></script>

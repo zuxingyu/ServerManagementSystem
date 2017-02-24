@@ -16,9 +16,9 @@ import (
 const USER_INFO_REDIS = "UserInfo"
 
 const (
-	USER_TYPE_NORMAL = 1 << iota
-	USER_TYPE_SUPER_ADMIN
-	USER_TYPE_NORMAL_ADMIN
+	USER_TYPE_NORMAL = 1
+	USER_TYPE_NORMAL_ADMIN = 2
+	USER_TYPE_SUPER_ADMIN = 3
 )
 
 type User struct {
@@ -29,7 +29,7 @@ type User struct {
 	Salt        string `description:"加密后缀" json:"salt"`
 	Created     int64  `description:"注册时间" xorm:"created"`
 	Updated     int64  `description:"修改时间" xorm:"updated"`
-	UserType    int    `description:"用户类型,1为超级管理员，0为普通用户" json:"userType"`
+	UserType    int    `description:"用户类型,1为普通用户，2为管理员用户，3为超级管理员用户" json:"userType"`
 	Email       string `description:"邮箱地址" json:"email"`
 	Mobile      string `description:"手机号" json:"mobile"`
 	MobileCheck int    `description:"手机是否验证" json:"mobileCheck"`

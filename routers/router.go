@@ -25,6 +25,8 @@ func init() {
 		beego.NSNamespace("/userManager",
 			beego.NSInclude(&admin.AdminUserController{}),
 		),
+		beego.NSNamespace("/serverManager",
+			beego.NSInclude(&web.ServerWebController{})),
 	)
 
 

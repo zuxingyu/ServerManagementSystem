@@ -40,7 +40,7 @@ func (this *AdminUserController) UserListData() {
 	iDisplayStart, _ := strconv.Atoi(Input.Query("iDisplayStart"))
 	iDisplayLength, _ := strconv.Atoi(Input.Query("iDisplayLength"))
 
-	orderStr, args, whereStr := util.Datatables(aColumns, Input, where)
+	orderStr, args, whereStr := util.Datatables("user", aColumns, Input, where)
 
 
 
